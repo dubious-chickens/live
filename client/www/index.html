@@ -6,18 +6,20 @@
     <title></title>
 
     <link href="lib/ionic/css/ionic.css" rel="stylesheet">
+    <link href="lib/ionicons/css/ionicons.min.css" rel="stylesheet">
+
     <link href="css/style.css" rel="stylesheet">
 
     <!-- IF using Sass (run gulp sass first), then uncomment below and remove the CSS includes above
     <link href="css/ionic.app.css" rel="stylesheet">
     -->
 
+    <script src="lib/jquery/dist/jquery.min.js"></script>
     <!-- ionic/angularjs js -->
     <script src="lib/ionic/js/ionic.bundle.js"></script>
     <script src="lib/ionic-rating/ionic-rating.js"></script>
+    <script src="lib/ionic-rating/ionic-rating.js"></script>
 
-    <!-- cordova script (this will be a 404 during development) -->
-    <script src="cordova.js"></script>
 
     <!-- your app's js -->
     <script src="js/app.js"></script>
@@ -35,27 +37,36 @@
     <ion-pane>
 
       <!-- APP HEADER -->
-
       <ion-header-bar align-title="left" class="bar-dark bar-header mainHeader" ng-hide="obj.hideMainHeader">
         <div class="title" ng-click="goHome()"></div>
+        <div class="buttons">
+          <i ng-click="recordVideo()" class="icon ion-videocamera"></i>
+          <form ng-hide="true" action="upload.htm" method="post" enctype="multipart/form-data">
+            <input ng-hide="true" id="videoCapture" placeholder="Record a Video" ng-model="movie" type="file" accept="video/*;capture=camcorder"/>
+            <input class="button button-block" type="submit" value="Upload">
+          </form>
+          <button class="button button-icon icon ion-navicon"></button>
+        </div>
+
         <button class="button button-icon icon ion-navicon"></button>
       </ion-header-bar>
-      
+
       <!-- SEARCH SUB-HEADER -->
       <ion-header-bar class="bar-dark bar-subheader item-input-inset" ng-hide="obj.hideMainHeader">
+
         <label class="item-input-wrapper search-artist">
           <i class="icon ion-ios-search placeholder-icon"></i>
           <form ng-submit="artistsSearch()">
             <input class="search" type="search" placeholder="Search" ng-model="query">
           </form>
-        </label>
+
+        </label><br />
       </ion-header-bar>
 
       <!-- TEMPLATES -->
-      
-      <ion-nav-view></ion-nav-view>
-      
-    </ion-pane>
 
+      <ion-nav-view></ion-nav-view>
+
+    </ion-pane>
   </body>
 </html>
